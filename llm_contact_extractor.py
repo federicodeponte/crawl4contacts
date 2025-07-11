@@ -22,11 +22,13 @@ from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
 import google.generativeai as genai
+import os
+import logging
 
-from setup_env import setup_environment
-setup_environment()
+# Simple logger setup
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logger = logging.getLogger(__name__)
 
-from core_utils import logger
 
 @dataclass
 class AIContact:
