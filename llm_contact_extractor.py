@@ -146,8 +146,10 @@ class EnhancedLLMContactExtractor:
     def setup_enhanced_ai(self):
         """Setup Enhanced AI with Gemini-2.5-Flash"""
         try:
-            # Use real API keys provided by user
-            gemini_api_key = "AIzaSyCcV31i8YA-YKLPHC0gx5zdD50gBcjTxq4"
+            # Get API key from environment variable
+            gemini_api_key = os.getenv("GEMINI_API_KEY")
+            if not gemini_api_key:
+                raise ValueError("GEMINI_API_KEY environment variable not set. Please set your Gemini API key.")
             
             # Configure Gemini with enhanced settings
             genai.configure(api_key=gemini_api_key)
